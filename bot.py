@@ -9,7 +9,7 @@ import phonenumbers
 from phonenumbers import geocoder, carrier
 
 # =========================================
-# CONFIGURATION
+# CONFIGURATION (Settings)
 # =========================================
 BOT_TOKEN = "8892483341:AAHJYIv5ZwwYyDZv7DM1_acO6TNm_bFtbFo"
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
@@ -17,8 +17,8 @@ CHANNEL_USERNAME = "@nobitaosint"
 REQUIRED_REFERRALS = 5
 DB_FILE = "bot_database.db"
 
-# Cyber/Hacker Theme Banner Image
-WELCOME_BANNER = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop"
+# Ek acchi tech banner image
+WELCOME_BANNER = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
 
 user_states = {}
 
@@ -65,13 +65,13 @@ def is_already_referred(user_id):
     return res is not None
 
 # =========================================
-# PROGRESS BAR
+# PROGRESS BAR (Simple & Neat)
 # =========================================
 def make_progress_bar(count, max_val=5):
     if count > max_val: count = max_val
     filled = "🟩" * count
     empty = "⬜" * (max_val - count)
-    return f"{filled}{empty} ({count}/{max_val})"
+    return f"{filled}{empty} ({count}/{max_val} Friends Joined)"
 
 # =========================================
 # TELEGRAM API METHODS
@@ -109,34 +109,34 @@ def is_user_joined(user_id):
     except: return False
 
 # =========================================
-# PREMIUM INLINE KEYBOARDS
+# EASY & PROFESSIONAL INLINE KEYBOARDS
 # =========================================
 def get_join_keyboard():
     join_link = f"https://t.me/{CHANNEL_USERNAME.replace('@', '')}"
     return {
         "inline_keyboard": [
-            [{"text": "☠️ ACCESS TERMINAL (JOIN)", "url": join_link}],
-            [{"text": "🔄 BYPASS RESTRICTION", "callback_data": "check_join"}]
+            [{"text": "📢 Join Our Telegram Channel", "url": join_link}],
+            [{"text": "✅ Join Kar Liya - Check Karein", "callback_data": "check_join"}]
         ]
     }
 
 def get_premium_menu():
     return {
         "inline_keyboard": [
-            [{"text": "🎯 EXPLOIT PHONE NUMBER", "callback_data": "phone_lookup"}],
-            [{"text": "👥 MULTIPLY NODES (REFERRALS)", "callback_data": "my_referrals"}]
+            [{"text": "🔍 Number Details Nikalein", "callback_data": "phone_lookup"}],
+            [{"text": "👥 My Referrals & Invite Link", "callback_data": "my_referrals"}]
         ]
     }
 
 def get_back_keyboard():
     return {
         "inline_keyboard": [
-            [{"text": "🔙 BACK TO MAINFRAME", "callback_data": "back_to_menu"}]
+            [{"text": "🔙 Back To Main Menu", "callback_data": "back_to_menu"}]
         ]
     }
 
 # =========================================
-# HACKER STYLE PHONE LOOKUP ENGINE
+# CLEAN & FANCY DATA OUTPUT
 # =========================================
 def phone_lookup(phone_number):
     if not phone_number.startswith('+'): 
@@ -144,34 +144,32 @@ def phone_lookup(phone_number):
     try:
         parsed_number = phonenumbers.parse(phone_number, None)
         if not phonenumbers.is_valid_number(parsed_number):
-            return "❌ <b>[ERROR] INVALID NODE TARGET. NUMBER NOT VALID.</b>"
+            return "❌ <b>[Galat Number]</b> Kripya sahi 10-digit ka number bhejiye."
         
         location = geocoder.description_for_number(parsed_number, "en") or "Unknown State"
         operator = carrier.name_for_number(parsed_number, "en") or "Unknown Operator"
         
-        # Super Advance Hacker-Style Layout Output
-        cyber_output = (
-            f"⚡ <b>NOBITA OSINT CORE ENGINE v3.0</b> ⚡\n"
-            f"<code>━━━━━━━━━━━━━━━━━━━━━━━━</code>\n"
-            f"📡 <b>TARGET NODE :</b> <code>{phone_number}</code>\n"
-            f"📊 <b>SIGNAL STATUS:</b> <code>[ACTIVE / ONLINE]</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👤 <b>FULL NAME   :</b> <code>[🔒 REFRESHING IN CORE...]</code>\n"
-            f"👴 <b>FATHER NAME :</b> <code>[🔒 TELECOM_DB_ENCRYPTED]</code>\n"
-            f"🏢 <b>OPERATOR    :</b> <code>{operator}</code>\n"
-            f"📍 <b>LOCATION    :</b> <code>{location}</code>\n"
-            f"🌍 <b>COUNTRY     :</b> <code>India (Local Engine)</code>\n"
-            f"🛰️ <b>GPS VECTOR  :</b> <code>22.57° N, 88.36° E (Approx)</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"⚠️ <b>[ALERT] LEVEL-2 ENCRYPTION DETECTED!</b>\n"
-            f"<i>Bypass Failed on Free Tier. Advanced details are locked under Govt Security Firewall.</i>"
+        # Clean and Professional Layout
+        output = (
+            f"🎯 <b>NOBITA OSINT SEARCH RESULT</b> 🎯\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"📞 <b>Mobile Number:</b> <code>{phone_number}</code>\n"
+            f"🏢 <b>SIM Company:</b> <code>{operator}</code>\n"
+            f"📍 <b>State / Location:</b> <code>{location}</code>\n"
+            f"🌍 <b>Country:</b> <code>India</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"👤 <b>Full Name:</b> <code>[🔒 Server Encrypted]</code>\n"
+            f"👴 <b>Father Name:</b> <code>[🔒 Govt Database Locked]</code>\n"
+            f"🛰️ <b>Live GPS Location:</b> <code>[🔒 Premium Plan Only]</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"⚠️ <b>Note:</b> Operator aur State details successfully bypass ho gayi hain. Name aur Father Name secure database ke andar lock hain."
         )
-        return cyber_output
+        return output
     except Exception as e: 
-        return f"⚠️ <b>[SYS_CRASH] Error: {str(e)}</b>"
+        return f"⚠️ <b>System Error: {str(e)}</b>"
 
 # =========================================
-# CORE CORE BOT LOGIC
+# CORE BOT LOGIC
 # =========================================
 def handle_message(message):
     chat_id = message["chat"]["id"]
@@ -180,7 +178,7 @@ def handle_message(message):
     bot_username = "Nobita_infoo_bot"
 
     if not is_user_joined(user_id):
-        send_message(chat_id, "⚠️ <b>[SYSTEM BLOCK] FIREWALL ACTIVE</b>\n\nMainframe ko access karne ke liye official security channel ko join karna compulsory hai. Niche diye gaye link ko bypass karein:", reply_markup=get_join_keyboard(), parse_mode="HTML")
+        send_message(chat_id, "👋 <b>Welcome to Nobita OSINT Bot!</b>\n\nBot ko use karne ke liye aapko hamare official telegram channel ko join karna zaroori hai.\n\n👇 <b>Niche diye gaye button par click karke join karein:</b>", reply_markup=get_join_keyboard(), parse_mode="HTML")
         return
 
     if user_text.startswith("/start"):
@@ -191,15 +189,15 @@ def handle_message(message):
                 if referrer_id != user_id and not is_already_referred(user_id):
                     if add_referral(referrer_id, user_id):
                         current_refs = get_referral_count(referrer_id)
-                        send_message(referrer_id, f"📡 <b>[NODE INJECTED] New Referral Connection!</b>\n\nAapke link se ek user server se connect hua hai.\nTotal Nodes: {current_refs}/{REQUIRED_REFERRALS}", parse_mode="HTML")
+                        send_message(referrer_id, f"🎉 <b>Badhai Ho!</b>\n\nAapke link se ek naye friend ne join kiya hai.\nTotal Referrals: <b>{current_refs}/{REQUIRED_REFERRALS}</b>", parse_mode="HTML")
             except: pass
 
         welcome_text = (
-            f"🤖 <b>SYSTEM ONLINE: NOBITA OSINT BOT v3.0</b> 🤖\n"
-            f"<code>━━━━━━━━━━━━━━━━━━━━━━━━</code>\n"
-            f"<i>Welcome Agent. Advanced Cyber Intelligence Core Terminal is active. Choose your exploit vector from below.</i>\n\n"
-            f"⚙️ <b>Firewall Status:</b> <code>Bypassed</code>\n"
-            f"🔑 <b>Required Nodes:</b> <code>{REQUIRED_REFERRALS} Invites</code>"
+            f"⚡ <b>WELCOME TO NOBITA OSINT BOT v3.0</b> ⚡\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"Aap is bot se kisi bhi mobile number ki Company aur State details nikal sakte hain.\n\n"
+            f"📢 <b>Rule:</b> Bot ko bilkul FREE use karne ke liye aapko bas **{REQUIRED_REFERRALS} dosto** ko invite karna hoga.\n\n"
+            f"👇 Niche diye gaye buttons se apni progress check karein ya details nikalein!"
         )
         send_photo(chat_id, WELCOME_BANNER, welcome_text, reply_markup=get_premium_menu(), parse_mode="HTML")
         user_states[chat_id] = "idle"
@@ -210,7 +208,7 @@ def handle_message(message):
             send_message(chat_id, phone_lookup(user_text), reply_markup=get_back_keyboard(), parse_mode="HTML")
             user_states[chat_id] = "idle"
         else:
-            send_message(chat_id, "❌ <b>[SYS_ERROR] INVALID INPUT.</b>\nPlease send a clean 10-digit mobile number node.")
+            send_message(chat_id, "❌ <b>Galat Number!</b>\nKripya bina country code (+91) ke sirf 10 digit ka mobile number send karein.")
         return
 
 def handle_callback(callback):
@@ -222,14 +220,14 @@ def handle_callback(callback):
 
     if data == "check_join":
         if is_user_joined(user_id):
-            answer_callback_query(callback_id, "⚙️ Firewall Bypassed!")
-            send_message(chat_id, "🎉 <b>Verification Successful!</b>\nType /start to initialize the hacker core menu.", reply_markup=get_premium_menu())
+            answer_callback_query(callback_id, "✅ Verification Successful!")
+            send_message(chat_id, "🎉 <b>Aapka swagat hai!</b> Channel join ho gaya hai. Ab niche diye gaye menu se bot use karein:", reply_markup=get_premium_menu(), parse_mode="HTML")
         else:
-            answer_callback_query(callback_id, "❌ Join Check Failed!")
+            answer_callback_query(callback_id, "❌ Aapne abhi tak join nahi kiya hai!")
         return
 
     if not is_user_joined(user_id):
-        answer_callback_query(callback_id, "❌ Access Denied!")
+        answer_callback_query(callback_id, "❌ Please channel join karein!")
         return
 
     if data == "my_referrals":
@@ -238,43 +236,43 @@ def handle_callback(callback):
         p_bar = make_progress_bar(my_count, REQUIRED_REFERRALS)
         
         status_text = (
-            f"📊 <b>NODE CONNECTION DASHBOARD</b>\n"
-            f"<code>━━━━━━━━━━━━━━━━━━━━━━━━</code>\n"
-            f"📈 <b>Live Extraction Progress:</b>\n{p_bar}\n\n"
-            f"🔒 <b>Core Decryption Access:</b> <code>{'🔓 UNLOCKED' if my_count >= REQUIRED_REFERRALS else '🔒 LOCKED'}</code>\n\n"
-            f"🔗 <b>Your Exploitation Link:</b>\n<code>{ref_link}</code>\n"
-            f"<code>━━━━━━━━━━━━━━━━━━━━━━━━</code>\n"
-            f"<i>Share this token payload link to add more network nodes!</i>"
+            f"👥 <b>YOUR REFERRAL DASHBOARD</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"📈 <b>Aapki Live Progress:</b>\n{p_bar}\n\n"
+            f"🔒 <b>Status:</b> <b>{'🔓 UNLOCKED (Aap use kar sakte hain)' if my_count >= REQUIRED_REFERRALS else '🔒 LOCKED (5 invites chahiye)'}</b>\n\n"
+            f"🔗 <b>Aapka Invite Link:</b>\n<code>{ref_link}</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"<i>💡 Tip: Is link ko copy karke apne dosto ya WhatsApp groups mein share karein!</i>"
         )
-        answer_callback_query(callback_id, "📡 Nodes Synced")
+        answer_callback_query(callback_id, "📊 Data Updated")
         send_message(chat_id, status_text, reply_markup=get_back_keyboard(), parse_mode="HTML")
         return
 
     if data == "phone_lookup":
         my_count = get_referral_count(user_id)
         if my_count < REQUIRED_REFERRALS:
-            answer_callback_query(callback_id, "🔒 Target Node Locked!")
+            answer_callback_query(callback_id, "🔒 Feature Locked!")
             ref_link = f"https://t.me/{bot_username}?start={user_id}"
             p_bar = make_progress_bar(my_count, REQUIRED_REFERRALS)
             lock_message = (
-                f"⛔ <b>[FIREWALL REJECTION] ACCESS DENIED</b>\n\n"
-                f"Mainframe core data extraction is locked. Secure 5 nodes first.\n"
-                f"📈 <b>Nodes Connected:</b> {p_bar}\n\n"
-                f"🔗 <b>Exploit Link:</b>\n<code>{ref_link}</code>"
+                f"⛔ <b>ACCESS DENIED! (Feature Lock Hai)</b>\n\n"
+                f"Number details nikalne ke liye pehle 5 referrals poore karein.\n"
+                f"📈 <b>Aapke Invites:</b> {p_bar}\n\n"
+                f"🔗 <b>Aapka Invite Link:</b>\n<code>{ref_link}</code>"
             )
             send_message(chat_id, lock_message, reply_markup=get_back_keyboard(), parse_mode="HTML")
             return
         
-        answer_callback_query(callback_id, "⚡ OSINT Core Active")
-        send_message(chat_id, "🎯 <b>OSINT PACKET INJECTOR ON</b>\n\nEnter the target 10-digit mobile number to initiate lookup scan:", parse_mode="HTML")
+        answer_callback_query(callback_id, "📱 Engine Active")
+        send_message(chat_id, "🎯 <b>NUMBER LOOKUP ENGINE ACTIVE</b>\n\nKripya jis mobile number ki details chahiye, wo 10 digit ka number yahan type karke send karein:", parse_mode="HTML")
         user_states[chat_id] = "awaiting_phone"
         return
 
     if data == "back_to_menu":
-        answer_callback_query(callback_id, "🔙 Mainframe Reloaded")
+        answer_callback_query(callback_id, "🔙 Main Menu")
         welcome_text = (
-            f"🤖 <b>SYSTEM ONLINE: NOBITA OSINT BOT v3.0</b> 🤖\n"
-            f"Select your exploit vector from below to manipulate data systems."
+            f"⚡ <b>WELCOME TO NOBITA OSINT BOT v3.0</b> ⚡\n"
+            f"Features ko use karne ke liye neeche diye gaye buttons par click karein."
         )
         send_photo(chat_id, WELCOME_BANNER, welcome_text, reply_markup=get_premium_menu(), parse_mode="HTML")
         user_states[chat_id] = "idle"
@@ -288,7 +286,7 @@ class WebServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(b"Hacker Core UI is Online!")
+        self.wfile.write(b"Easy Professional Bot is Online!")
 
 def run_server():
     port = int(os.environ.get("PORT", 8080))
@@ -296,11 +294,11 @@ def run_server():
     server.serve_forever()
 
 # =========================================
-# MAIN POLLING LOOP
+# MAIN LOOP
 # =========================================
 def bot_polling():
     offset = 0
-    print("✅ Cyber Core Polling Started...")
+    print("✅ Easy UI Bot Polling Started...")
     while True:
         try:
             response = requests.get(API_URL + "/getUpdates", params={"timeout": 30, "offset": offset}, timeout=35).json()
