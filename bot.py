@@ -11,7 +11,7 @@ from phonenumbers import geocoder, carrier
 # =========================================
 # CONFIGURATION (Settings)
 # =========================================
-BOT_TOKEN = "8892483341:AAHJYIv5ZwwYyDZv7DM1_acO6TNm_bFtbFo"
+BOT_TOKEN = "8892483341:AAHExQb-NuUs1OuqiaaCAgCuDFJZGPH6m0o"
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 CHANNEL_USERNAME = "@nobitaosint"
 REQUIRED_REFERRALS = 5
